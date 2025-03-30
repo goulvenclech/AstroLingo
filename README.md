@@ -1,48 +1,54 @@
-# Astro Starter Kit: Basics
+# AstroLingo — Let's make learning languages free 🪐
 
-```sh
-pnpm create astro@latest -- --template basics
+> [!WARNING]
+> AstroLingo is in early development and is not ready for public use... but new contributors are welcome!
+
+[AstroLingo](https://astropi.goulven-clech.dev/) is a free and open-source project that helps you build beautiful, accessible, and free language learning websites. It's built with [Astro](https://astro.build/), a fast and modern Static Site Generator.
+
+## How to install
+
+Create a new AstroLingo project by running the following command:
+
+```bash
+# If you use pnpm
+pnpm create astro --template github:goulvenclech/astrolingo/starter
+# If you use npm
+npm create astro --template github:goulvenclech/astrolingo/starter
+# If you use yarn
+yarn create astro --template github:goulvenclech/astrolingo/starter
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+Or add AstroLingo to an existing Astro project:
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+```bash
+# If you use pnpm
+pnpm astro add @astrolingo/core
+# If you use npm
+npx astro add @astrolingo/core
+# If you use yarn
+yarn astro add @astrolingo/core
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## How to use
 
-## 🧞 Commands
+Check out the [AstroLingo documentation](https://astropi.goulven-clech.dev/) for more information. Here are some quick links:
 
-All commands are run from the root of the project, from a terminal:
+- [Getting Started](https://astropi.goulven-clech.dev/learn/2-getting-started)
+- [Creating a blog](https://astropi.goulven-clech.dev/learn/3-create-a-blog)
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+## How to contribute
 
-## 👀 Want to learn more?
+AstroLingo is a community-driven project, and we welcome contributions of all kinds. If you experience any problem with our project, please [open an issue](https://github.com/goulvenclech/astrolingo/issues). If you have any suggestions, please [open a discussion](https://github.com/goulvenclech/astrolingo/discussions).
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+If you want to contribute to AstroLingo, please read the [Contributing Guide](./CONTRIBUTING.md) and the [Code of Conduct](./CODE_OF_CONDUCT.md) before submitting a pull request. You can find more technical information about the project in the `README.md` files of each main directory:
+
+| Directory          | Description                            | Link                                   |
+| :----------------- | :------------------------------------- | :------------------------------------- |
+| `docs`             | Documentation (made with AstroLingo!)  | [Readme](./docs/README.md)             |
+| `packages/core`    | Core components, styles, and utilities | [Readme](./packages/core/README.md)    |
+| `packages/games`   | Gamified components and utilities      | [Readme](./packages/games/README.md)   |
+| `packages/starter` | Starter template for AstroLingo        | [Readme](./packages/starter/README.md) |
+
+## License
+
+AstroLingo is licensed under the [MIT License](./LICENSE.md). You are free to use, modify, and distribute this project. You must include the original license in any fork of this project. Attribution is appreciated ❤️

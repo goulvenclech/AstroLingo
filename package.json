@@ -1,14 +1,25 @@
 {
-  "name": "astrolingo",
-  "type": "module",
+  "name": "@goulvenclech/astrolingo",
+  "private": true,
   "version": "0.0.1",
+  "description": "Root workspace for AstroLingo",
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "version": "pnpm changeset version && pnpm i --no-frozen-lockfile",
+    "test": "vitest --ui  --coverage"
   },
-  "dependencies": {
-    "astro": "^5.5.3"
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": ">=20",
+    "pnpm": ">=8"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.28.1",
+    "@vitest/coverage-istanbul": "^3.0.9",
+    "@vitest/ui": "^3.0.9",
+    "astro": "^5.5.3",
+    "prettier": "^3.5.3",
+    "vitest": "^3.0.9"
   }
 }
