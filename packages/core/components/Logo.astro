@@ -1,0 +1,19 @@
+---
+/**
+ * Logo component used notably in the Header as a link to the home page.
+ */
+---
+
+<a class="logo" href="/"> 🪐 Astrolingo </a>
+<style is:global>
+  @layer components {
+    a.logo {
+      font-weight: 700;
+      text-decoration-line: none;
+      margin-right: 0.25rem;
+    }
+    a.logo:hover {
+      color: var(--color-primary);
+    }
+  }
+</style>

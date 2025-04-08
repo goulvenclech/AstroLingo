@@ -1,0 +1,36 @@
+---
+import BlogEntryCard from "../components/cards/BlogEntryCard.astro"
+import Layout from "../layouts/Layout.astro"
+import { getCurrentArchetype } from "../utils/archetypes"
+import { getCollectionEntries } from "../utils/collections-entries"
+/**
+ * This is used as the index page of blog's collections.
+ */
+const archetype = getCurrentArchetype(Astro.url)
+
+const allBlogEntries = await getCollectionEntries(archetype?.collection)
+---
+
+<Layout
+  title={archetype?.name || ""}
+  description={`${archetype?.name} latest entries`}
+>
+  <main>
+    <section>
+      <h1>{archetype?.name}</h1>
+    </section>
+    <section class="blog-entries">
+      {
+        allBlogEntries
+          .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+          .map((entry) => <BlogEntryCard entry={entry} archetype={archetype} />)
+      }
+    </section>
+  </main>
+</Layout>
+<style>
+  .blog-entries {
+    display: grid;
+    gap: 1rem;
+  }
+</style>

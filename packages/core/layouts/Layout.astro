@@ -1,0 +1,28 @@
+---
+import BaseLayout from "./BaseLayout.astro"
+import Header from "./Header.astro"
+import Footer from "./Footer.astro"
+/**
+ * Layout used for most pages of the site.
+ * @param {string} title - The title of the page.
+ */
+interface Props {
+  title: string
+  description: string
+}
+
+const { title, description } = Astro.props
+---
+
+<BaseLayout title={title} description={description}>
+  <Header />
+  <div class="layout-container">
+    <slot />
+  </div>
+  <Footer />
+</BaseLayout>
+<style>
+  .layout-container {
+    display: flex;
+  }
+</style>

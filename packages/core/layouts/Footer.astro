@@ -1,0 +1,23 @@
+---
+import Logo from "../components/Logo.astro"
+import packageJson from "@goulvenclech/astrolingo/package.json"
+/**
+ * Header navigation used on our website layout
+ */
+---
+
+<footer>
+  <p>
+    <Logo />v{packageJson.version} (2024). Made by <a
+      href="https://goulven-clech.dev"
+      target="_blank">Goulven CLEC'H</a
+    >.
+  </p>
+</footer>
+<style is:global>
+  footer {
+    margin: 0 auto;
+    max-width: 1024px;
+    text-align: center;
+  }
+</style>

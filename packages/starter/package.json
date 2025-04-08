@@ -1,0 +1,18 @@
+{
+  "name": "@goulvenclech/astrolingo-starter",
+  "private": true,
+  "type": "module",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@goulvenclech/astrolingo": "workspace:*",
+    "astro": "^4.8.0"
+  },
+  "devDependencies": {}
+}

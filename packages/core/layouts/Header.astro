@@ -1,0 +1,46 @@
+---
+// Astro imports
+import Logo from "../components/Logo.astro"
+import HeaderNavLink from "../components/header/HeaderNavLink.astro"
+// import HeaderNavLinkExternal from "../components/header/HeaderNavLinkExternal.astro"
+import DarkMode from "../components/icons/DarkMode.astro"
+// get archetypes in userConfig for the navigation
+import { userConfig } from "virtual:astrolingo-user-config"
+const { archetypes } = userConfig
+/**
+ * Header navigation used on our website layout
+ */
+// Check if a path matches the current page
+const isCurrentPage = (path: string) => {
+  const currentPage = Astro.url.pathname.split("/")[1]
+  return currentPage === path
+}
+---
+
+<nav class="header-nav">
+  <Logo />
+  {
+    archetypes.map((archetype) => (
+      <HeaderNavLink
+        url={`/${archetype.path}`}
+        isCurrent={isCurrentPage(archetype.path)}
+      >
+        {archetype.name}
+      </HeaderNavLink>
+    ))
+  }
+  <HeaderNavLink url="https://github.com/goulvenclech/astrolingo">
+    Join on Github!
+  </HeaderNavLink>
+  <DarkMode />
+</nav>
+<style is:global>
+  @layer components {
+    nav.header-nav {
+      display: flex;
+      margin: 1.5rem;
+      gap: 0.5rem;
+      align-items: center;
+    }
+  }
+</style>

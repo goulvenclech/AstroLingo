@@ -1,0 +1,37 @@
+---
+import Layout from "../layouts/Layout.astro"
+import SidebarNavigation from "../components/SidebarNavigation.astro"
+import PageNavigation from "../components/PageNavigation.astro"
+import { getCurrentArchetype } from "../utils/archetypes"
+import { getCollectionEntries } from "../utils/collections-entries"
+/**
+ * This is used as the index page of blog's collections.
+ */
+const archetype = getCurrentArchetype(Astro.url)
+
+const allDocsEntries = await getCollectionEntries(archetype.collection)
+---
+
+<Layout title={archetype?.name || ""} description={archetype?.name || ""}>
+  <SidebarNavigation allEntries={allDocsEntries} />
+  <main>
+    <section>
+      <h1>{archetype?.name}</h1>
+    </section>
+    <section>
+      {
+        allDocsEntries.map((entry) => (
+          <p>
+            <a href={archetype?.path + "/" + entry.slug}>{entry.data.title}</a>
+          </p>
+        ))
+      }
+    </section>
+  </main>
+  <PageNavigation headings={[]} />
+</Layout>
+<style>
+  main {
+    max-width: 70ch;
+  }
+</style>

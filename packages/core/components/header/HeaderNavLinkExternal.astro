@@ -1,0 +1,25 @@
+---
+/**
+ * An external link, displayed in the Header navigation.
+ * @param {string} url - The URL to link to.
+ */
+const { url } = Astro.props
+---
+
+<a href={url} class="header-nav-link-external"><slot /></a>
+<style is:global>
+  @layer components {
+    a.header-nav-link-external {
+      display: flex;
+      align-items: center;
+      font-size: 1rem;
+      line-height: 1.5rem;
+    }
+    a.header-nav-link-external:hover {
+      color: var(--color-primary);
+    }
+    a.header-nav-link-external:active {
+      color: var(--color-primary-dark);
+    }
+  }
+</style>

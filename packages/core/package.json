@@ -1,0 +1,36 @@
+{
+  "name": "@goulvenclech/astrolingo",
+  "version": "0.3.0",
+  "scripts": {},
+  "main": "index.ts",
+  "author": "Goulven Clec'h <goulven.clech@protonmail.com>",
+  "description": "Build beautiful and accessible API documentations with Astro 🪐",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/goulvenclech/astrolingo",
+    "directory": "packages/core"
+  },
+  "bugs": "https://github.com/goulvenclech/astrolingo/issues",
+  "homepage": "https://astropi.goulven-clech.dev",
+  "keywords": [
+    "astro",
+    "documentation",
+    "docs",
+    "api",
+    "open-api",
+    "astrolingo"
+  ],
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "exports": {
+    ".": "./index.ts",
+    "./pages/*": "./pages/*",
+    "./package.json": "./package.json"
+  },
+  "peerDependencies": {
+    "astro": "^4.8.0"
+  }
+}

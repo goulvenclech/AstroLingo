@@ -1,0 +1,25 @@
+---
+import { userConfig } from "virtual:astrolingo-user-config"
+import Layout from "../layouts/Layout.astro"
+import LandingHero from "../layouts/landing/LandingHero.astro"
+import LandingFeatures from "../layouts/landing/LandingFeatures.astro"
+/**
+ * This is the default landing page of an Astrolingo project.
+ */
+const { projectName } = userConfig
+---
+
+<Layout title="Welcome" description="This a new Astrolingo project!">
+  <main class="landing-main">
+    <LandingHero />
+    <LandingFeatures />
+  </main>
+</Layout>
+
+<style is:global>
+  @layer components {
+    main.landing-main {
+      width: 1024px;
+    }
+  }
+</style>
