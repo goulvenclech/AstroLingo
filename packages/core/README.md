@@ -3,7 +3,7 @@
 > [!WARNING]
 > AstroLingo is in early development and is not ready for public use... but new contributors are welcome!
 
-[AstroLingo](https://astropi.goulven-clech.dev/) is a free and open-source project that helps you build beautiful, accessible, and free language learning websites. It's built with [Astro](https://astro.build/), a fast and modern Static Site Generator.
+[AstroLingo](https://astropi.goulven-clech.dev/) is a free and open-source project that helps you build beautiful and accessible language learning websites. It's built with [Astro](https://astro.build/), a fast and modern Static Site Generator.
 
 This core package contains the components, styles, and utilities that power the project.
 

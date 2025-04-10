@@ -7,11 +7,10 @@ import HeroDraw from "../../components/icons/HeroDraw.astro"
 
 <section class="landing-hero">
   <div>
-    <h1>Let's make a better doc</h1>
+    <h1 class="text-fuchsia-500">Let's make learning languages free!</h1>
     <p>
       Astrolingo is a free and open-source project that helps you build
-      beautiful and accessible API documentation for your projects. It's built
-      with
+      beautiful and accessible language learning websites. It's built with
       <a href="https://astro.build" target="_blank">Astro</a>, a fast and modern
       Static Site Generator.
       <div class="landing-hero-cta">
@@ -32,6 +31,11 @@ import HeroDraw from "../../components/icons/HeroDraw.astro"
 </section>
 <style is:global>
   @layer components {
+    section.landing-hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+    }
+
     section.landing-hero {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));

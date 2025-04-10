@@ -6,6 +6,8 @@ import {
   docsContentCollection,
   docsOpenApiCollection,
 } from "./utils/collections-schemas"
+import tailwindcss from "@tailwindcss/vite"
+
 /**
  * UNDERSTANDING ASTRO INTEGRATIONS API
  * Astrolingo isn't a "starter" Astro project, where the user has to clone a whole project
@@ -38,7 +40,10 @@ export default function AstrolingoIntegration(
         // Update the Astro config
         updateConfig({
           vite: {
-            plugins: [vitePluginAstrolingoUserConfig(userConfig)],
+            plugins: [
+              vitePluginAstrolingoUserConfig(userConfig),
+              tailwindcss(),
+            ],
           },
         })
       },

@@ -1,6 +1,6 @@
 # Astrolingo - Starter 🪐
 
-[AstroLingo](https://astropi.goulven-clech.dev/) is a free and open-source project that helps you build beautiful, accessible, and free language learning websites. It's built with [Astro](https://astro.build/), a fast and modern Static Site Generator.
+[AstroLingo](https://astropi.goulven-clech.dev/) is a free and open-source project that helps you build beautiful and accessible language learning websites. It's built with [Astro](https://astro.build/), a fast and modern Static Site Generator.
 
 This is the starter template for Astrolingo. It's a simple Astro project with Astrolingo default configuration to get you started quickly.
 

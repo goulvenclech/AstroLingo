@@ -16,10 +16,10 @@
   },
   "devDependencies": {
     "@changesets/cli": "^2.28.1",
-    "@vitest/coverage-istanbul": "^3.0.9",
-    "@vitest/ui": "^3.0.9",
-    "astro": "^5.5.3",
+    "@vitest/coverage-istanbul": "^3.1.1",
+    "@vitest/ui": "^3.1.1",
+    "astro": "^5.6.1",
     "prettier": "^3.5.3",
-    "vitest": "^3.0.9"
+    "vitest": "^3.1.1"
   }
 }

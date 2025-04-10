@@ -1,4 +1,10 @@
-@layer reset, base, components;
+@import "tailwindcss";
+/* This @source directive tells Tailwind CSS to look in parent directories,
+   allowing it to consider files in node_modules despite them being .gitignore.
+   We should use @source "node_modules/@goulvenclech/astrolingo", but it doesn't
+   work ? See issue #1 */
+@source "..";
+@layer base, components;
 
 @layer base {
   html {
@@ -23,7 +29,10 @@
     * BODY
     */
   body {
+    font-family: "inter", sans-serif;
     background-color: var(--color-white);
+    font-optical-sizing: auto;
+    font-weight: 400;
     color: var(--color-darker);
   }
   .dark body {
