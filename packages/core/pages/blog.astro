@@ -1,5 +1,5 @@
 ---
-import BlogEntryCard from "../components/cards/BlogEntryCard.astro"
+import Card from "../components/Card.astro"
 import Layout from "../layouts/Layout.astro"
 import { getCurrentArchetype } from "../utils/archetypes"
 import { getCollectionEntries } from "../utils/collections-entries"
@@ -18,19 +18,28 @@ const allBlogEntries = await getCollectionEntries(archetype?.collection)
   <main>
     <section>
       <h1>{archetype?.name}</h1>
+      <p>Our latest news and releases.</p>
     </section>
-    <section class="blog-entries">
+    <section class="grid gap-4">
       {
         allBlogEntries
           .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-          .map((entry) => <BlogEntryCard entry={entry} archetype={archetype} />)
+          .map((entry) => (
+            <Card
+              href={archetype?.path + "/" + entry.slug}
+              title={entry.data.title}
+            >
+              <p slot="subtitle" class="my-0">
+                {entry.data.date.toLocaleString("en-GB", {
+                  day: "numeric",
+                  month: "long",
+                  year: "numeric",
+                })}
+              </p>
+              {entry.data.abstract}
+            </Card>
+          ))
       }
     </section>
   </main>
 </Layout>
-<style>
-  .blog-entries {
-    display: grid;
-    gap: 1rem;
-  }
-</style>

@@ -42,12 +42,12 @@ AstroLingo is a community-driven project, and we welcome contributions of all ki
 
 If you want to contribute to AstroLingo, please read the [Contributing Guide](./CONTRIBUTING.md) and the [Code of Conduct](./CODE_OF_CONDUCT.md) before submitting a pull request. You can find more technical information about the project in the `README.md` files of each main directory:
 
-| Directory          | Description                            | Link                                   |
-| :----------------- | :------------------------------------- | :------------------------------------- |
-| `docs`             | Documentation (made with AstroLingo!)  | [Readme](./docs/README.md)             |
-| `packages/core`    | Core components, styles, and utilities | [Readme](./packages/core/README.md)    |
-| `packages/games`   | Gamified components and utilities      | [Readme](./packages/games/README.md)   |
-| `packages/starter` | Starter template for AstroLingo        | [Readme](./packages/starter/README.md) |
+| Directory        | Description                            | Link                                 |
+| :--------------- | :------------------------------------- | :----------------------------------- |
+| `docs`           | Documentation (made with AstroLingo!)  | [Readme](./docs/README.md)           |
+| `packages/core`  | Core components, styles, and utilities | [Readme](./packages/core/README.md)  |
+| `packages/games` | Gamified components and utilities      | [Readme](./packages/games/README.md) |
+| `starter`        | Starter template for AstroLingo        | [Readme](./starter/README.md)        |
 
 ## License
 

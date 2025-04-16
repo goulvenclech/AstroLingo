@@ -1,5 +1,5 @@
 packages:
   - "packages/core"
   - "packages/games"
-  - "packages/starter"
+  - "starter"
   - "docs"

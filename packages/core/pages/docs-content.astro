@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro"
-import SidebarNavigation from "../components/SidebarNavigation.astro"
-import PageNavigation from "../components/PageNavigation.astro"
+import SidebarNavigation from "../components/old/SidebarNavigation.astro"
+import PageNavigation from "../components/old/PageNavigation.astro"
 import { getCurrentArchetype } from "../utils/archetypes"
 import { getCollectionEntries } from "../utils/collections-entries"
 /**
@@ -30,8 +30,3 @@ const allDocsEntries = await getCollectionEntries(archetype.collection)
   </main>
   <PageNavigation headings={[]} />
 </Layout>
-<style>
-  main {
-    max-width: 70ch;
-  }
-</style>

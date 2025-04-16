@@ -1,6 +1,5 @@
 ---
 // Tailwind CSS imports
-import "../assets/app.css"
 /**
  * Base layout of our Astro site, which includes the head and body tags.
  * @param {string} title - The title of the page.
@@ -30,7 +29,9 @@ const { title, description } = Astro.props
     <title>{title} | Astrolingo</title>
     <meta name="description" content={description} />
   </head>
-  <body>
+  <body
+    class="bg-background dark:bg-background-dark text-font dark:text-font-dark"
+  >
     <slot />
     <!-- Dark Mode Script -->
     <script is:inline>
@@ -38,7 +39,7 @@ const { title, description } = Astro.props
        * This script is inlined and put at the top of the body to avoid a flicker of light mode.
        * It initializes the dark mode based on the local storage or the system preference.
        * After page load, the dark mode is handled by the DarkMode component
-       * See there -> src/components/icons/DarkMode.astro
+       * See there -> src/components/old/icons/DarkMode.astro
        */
       // Get theme from local storage and/or browser media queries (system).
       const theme = localStorage.getItem("theme")

@@ -1,0 +1,34 @@
+---
+/**
+ * A generic card component that can be used to display content and link to other pages.
+ * Can have a subtitle as a slot.
+ */
+interface Props {
+  /** Title of the card */
+  title?: string
+  /** URL to navigate when the card is clicked (optional) */
+  href?: string
+  /** Additional CSS classes */
+  class?: string
+}
+
+const { href = "#", class: className, title } = Astro.props
+---
+
+<a
+  href={href}
+  class:list={[
+    "flex flex-col gap-2.5 py-4 px-5 no-underline interactive card group",
+    className,
+  ]}
+>
+  <div class="flex justify-between items-center">
+    <h3>
+      {title}
+    </h3>
+    <slot name="subtitle" />
+  </div>
+  <p class="m-0">
+    <slot />
+  </p>
+</a>

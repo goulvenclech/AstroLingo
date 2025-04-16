@@ -29,15 +29,13 @@ export default function AstrolingoIntegration(
     hooks: {
       // This hooks run on initialization, before either the Vite or Astro config have resolved.
       // We use this hook to modify the Astro config, and inject our custom routes.
-      "astro:config:setup": async ({ injectRoute, updateConfig }) => {
-        // Inject a route for the homepage
-        injectRoute({
-          pattern: "/",
-          entrypoint: "@goulvenclech/astrolingo/pages/index.astro",
-          prerender: true,
-        })
+      "astro:config:setup": async ({
+        injectRoute,
+        injectScript,
+        updateConfig,
+      }) => {
+        injectScript("page-ssr", "import './src/styles/main.css';")
         generateCollections(injectRoute, archetypes)
-        // Update the Astro config
         updateConfig({
           vite: {
             plugins: [

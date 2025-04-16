@@ -16,13 +16,20 @@ const { title, description } = Astro.props
 
 <BaseLayout title={title} description={description}>
   <Header />
-  <div class="layout-container">
+  <div class="flex">
     <slot />
   </div>
   <Footer />
 </BaseLayout>
-<style>
-  .layout-container {
-    display: flex;
+<style is:global>
+  @layer base {
+    main {
+      width: 70ch;
+      padding: 0 0.5rem;
+      margin: 0 auto;
+    }
+    section {
+      margin: 3rem 0;
+    }
   }
 </style>

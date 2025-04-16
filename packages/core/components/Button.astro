@@ -1,0 +1,50 @@
+---
+/**
+ * A reusable button component that can be used as a link or a button.
+ */
+interface Props {
+  /** URL to navigate when clicked (makes it an anchor) */
+  href?: string
+  /** Button variant boolean */
+  alt?: boolean
+  /** Additional CSS classes */
+  class?: string
+  /** The type attribute for button element */
+  type?: "button" | "submit" | "reset"
+}
+
+const {
+  href,
+  alt = false,
+  class: className,
+  type = "button",
+  ...rest
+} = Astro.props
+
+// Determine classes based on variant
+const variantClasses = alt ? "btn-alt" : ""
+---
+
+{
+  href ? (
+    <a
+      href={href}
+      class:list={[
+        "interactive inline-flex items-center justify-center px-2.5 py-2 btn",
+        variantClasses,
+        className,
+      ]}
+      {...rest}
+    >
+      <slot />
+    </a>
+  ) : (
+    <button
+      type={type}
+      class:list={["interactive btn", variantClasses, className]}
+      {...rest}
+    >
+      <slot />
+    </button>
+  )
+}
