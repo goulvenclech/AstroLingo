@@ -28,9 +28,7 @@ const isCurrentPage = (path: string) => {
           href={url}
           aria-current={isCurrent ? "page" : false}
           class:list={[
-            "flex items-center gap-1 rounded-lg border border-transparent px-2 py-1 no-underline", // Base styles
-            "hover:bg-foreground dark:hover:bg-foreground-dark", // Hover styles
-            "active:border-primary active:text-primary", // Active styles
+            "flex items-center gap-1 rounded-lg border border-transparent px-2 py-1 no-underline interactive interactive-effect-nav",
             "aria-[current=page]:bg-primary-foreground aria-[current=page]:text-primary", // Current page styles
           ]}
         >

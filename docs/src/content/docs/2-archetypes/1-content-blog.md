@@ -23,9 +23,9 @@ Then, create an Astropi archetype based on this collection. In `docs/astro.confi
 ```ts
   archetypes: [
     {
-      path: "blog", // Used in the URL
       name: "Blog", // Displayed in the UI
       collection: "blog", // The collection name (see above)
+      description: "Create a blog with markdown files.", // Displayed in the UI
       type: "blog-content", // Don't change this
     },
   ],

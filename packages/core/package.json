@@ -27,6 +27,7 @@
   },
   "exports": {
     ".": "./index.ts",
+    "./theme": "./styles/base.css",
     "./pages/*": "./pages/*",
     "./components/*": "./components/*",
     "./layouts/*": "./layouts/*",

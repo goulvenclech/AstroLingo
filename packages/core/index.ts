@@ -34,7 +34,7 @@ export default function AstrolingoIntegration(
         injectScript,
         updateConfig,
       }) => {
-        injectScript("page-ssr", "import './src/styles/main.css';")
+        injectScript("page-ssr", "import './src/styles/main.css'")
         generateCollections(injectRoute, archetypes)
         updateConfig({
           vite: {

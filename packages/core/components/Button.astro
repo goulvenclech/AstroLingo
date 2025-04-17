@@ -22,7 +22,9 @@ const {
 } = Astro.props
 
 // Determine classes based on variant
-const variantClasses = alt ? "btn-alt" : ""
+const variantClasses = alt
+  ? "btn-alt interactive-effect-secondary"
+  : "btn interactive-effect-primary"
 ---
 
 {
@@ -30,7 +32,7 @@ const variantClasses = alt ? "btn-alt" : ""
     <a
       href={href}
       class:list={[
-        "interactive inline-flex items-center justify-center px-2.5 py-2 btn",
+        "interactive inline-flex items-center justify-center px-2.5 py-2",
         variantClasses,
         className,
       ]}
@@ -41,7 +43,7 @@ const variantClasses = alt ? "btn-alt" : ""
   ) : (
     <button
       type={type}
-      class:list={["interactive btn", variantClasses, className]}
+      class:list={["interactive", variantClasses, className]}
       {...rest}
     >
       <slot />
