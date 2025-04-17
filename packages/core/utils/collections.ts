@@ -16,7 +16,7 @@ export function generateCollections(
   archetypes.forEach((archetype) => {
     // Inject a route for each archetype index
     injectRoute({
-      pattern: `/${archetype.path}`,
+      pattern: `/${archetype.collection}`,
       entrypoint: getEntryPoint(archetype),
       prerender: true,
     })
@@ -24,7 +24,7 @@ export function generateCollections(
   archetypes.forEach((archetype) => {
     // Inject a route for each archetype dynamic route
     injectRoute({
-      pattern: `/${archetype.path}/[...slug]`,
+      pattern: `/[...slug]`,
       entrypoint: getDynamicEntryPoint(archetype),
       prerender: true,
     })

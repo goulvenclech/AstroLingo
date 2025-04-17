@@ -26,6 +26,7 @@ export const docsContentCollection = {
   schema: z.object({
     type: z.literal("docs-content").default("docs-content"),
     title: z.string(),
+    abstract: z.string().optional(),
     status: z.enum(["published", "draft"]).default("published"),
   }),
 }

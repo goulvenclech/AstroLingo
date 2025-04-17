@@ -1,0 +1,63 @@
+---
+import { getCurrentArchetype } from "../utils/archetypes"
+import { getCollectionEntries } from "../utils/collections-entries"
+import { generateCollectionNavigation } from "../utils/navigation"
+
+/**
+ * Sidebar navigation, used to navigate between pages in the same collection.
+ * Pages are fetched from the collection specified in the archetype, and grouped
+ * by categories (folders in the collection, if any).
+ */
+const archetype = getCurrentArchetype(Astro.url)
+const allEntries = await getCollectionEntries(archetype.collection)
+
+// Check if a link is the current page, used to apply the active class
+const isCurrentPage = (slug: string) => {
+  // Normalize current path: remove trailing slash, get last segment
+  const currentPathname = Astro.url.pathname.replace(/\/$/, "")
+  const currentPage = currentPathname.split("/").pop() ?? ""
+  // Normalize link slug: get last segment if it contains slashes (though slugs usually don't)
+  const pathPage = slug.split("/").pop() ?? ""
+  // Handle index pages explicitly if the slug is the base path
+  if (
+    pathPage === archetype.collection &&
+    currentPage === archetype.collection
+  ) {
+    return true
+  }
+  // Compare last segments for non-index pages
+  return pathPage === currentPage && pathPage !== archetype.collection
+}
+
+const collectionNavigation = generateCollectionNavigation(allEntries)
+---
+
+<aside class="m-5 flex w-[200px] flex-col text-sm">
+  {
+    Object.entries(collectionNavigation).map(([category, entries]) => (
+      <div class="mb-4">
+        {category && (
+          <h3 class="mb-1 ml-2 mt-0 text-sm font-semibold">{category}</h3>
+        )}
+        {entries.map((doc) => {
+          const url = `/${archetype.collection}/${doc.slug}`
+          const isCurrent = isCurrentPage(doc.slug)
+          return (
+            <a
+              href={url}
+              aria-current={isCurrent ? "page" : false}
+              class:list={[
+                "flex items-center gap-1 rounded-lg border border-transparent px-2 py-1 no-underline", // Base styles
+                "hover:bg-foreground dark:hover:bg-foreground-dark", // Hover styles
+                "active:text-primary active:bg-primary-foreground", // Active styles
+                "aria-[current=page]:text-primary aria-[current=page]:bg-primary-foreground", // Current page styles
+              ]}
+            >
+              {doc.data.title}
+            </a>
+          )
+        })}
+      </div>
+    ))
+  }
+</aside>

@@ -1,6 +1,7 @@
 ---
 slug: "getting-started/new-project"
-title: "Launch a new project"
+title: "New project"
+abstract: "Create a new Astrolingo project from the starter template."
 ---
 
 Run the following command to create a new Astropi project from the starter template:

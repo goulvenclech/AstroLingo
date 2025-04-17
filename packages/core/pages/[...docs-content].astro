@@ -1,9 +1,8 @@
 ---
-import {} from "../utils/collections-entries"
 import Layout from "../layouts/Layout.astro"
-import SidebarNavigation from "../components/old/SidebarNavigation.astro"
+import SidebarNavigation from "../layouts/SidebarNavigation.astro"
 import { getCollectionTypeEntries } from "../utils/collections-entries"
-import PageNavigation from "../components/old/PageNavigation.astro"
+import PageNavigation from "../layouts/PageNavigation.astro"
 /**
  * this generate the pages inside blog's collections.
  */
@@ -20,6 +19,7 @@ const { Content, headings } = await entry.render()
   <main>
     <section class="title-section">
       <h1>{entry.data.title}</h1>
+      {entry.data.abstract && <p>{entry.data.abstract}</p>}
     </section>
     <section>
       <Content />

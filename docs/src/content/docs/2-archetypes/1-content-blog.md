@@ -1,6 +1,7 @@
 ---
 slug: "archetypes/content-blog"
 title: "Content blog"
+abstract: "Create a blog with markdown files."
 ---
 
 A content blog is a collection based on markdown files that are displayed in the UI as a blog. This archetype is perfect for creating a blog for your project.

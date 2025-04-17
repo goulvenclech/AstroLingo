@@ -1,6 +1,7 @@
 ---
 slug: "getting-started/add-existing-project"
-title: "Add to an existing project"
+title: "Existing project"
+abstract: "Add the Astrolingo integration to an existing Astro project."
 ---
 
 Because Astropi is an Astro integration, you can easly add Astropi to your existing Astro project:

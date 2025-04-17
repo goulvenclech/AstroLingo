@@ -17,27 +17,28 @@ export default defineConfig({
       projectName: "Astrolingo",
       archetypes: [
         {
-          path: "docs",
           name: "Documentation",
           collection: "docs",
+          description: "Everything you need to build your Astrolingo project.",
           type: "docs-content",
         },
         {
-          path: "refs",
           name: "Reference",
           collection: "refs",
+          description: "Astrolingo technical and components references.",
           type: "docs-content",
         },
         {
-          path: "contribute",
           name: "Contribute",
           collection: "contribute",
+          description:
+            "How to contribute to Astrolingo and its related projects.",
           type: "docs-content",
         },
         {
-          path: "blog",
           name: "Blog",
           collection: "blog",
+          description: "Project updates and latest news.",
           type: "blog-content",
         },
       ],

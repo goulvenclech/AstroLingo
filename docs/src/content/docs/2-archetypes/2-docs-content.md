@@ -1,6 +1,7 @@
 ---
 slug: "archetypes/docs-content"
 title: "Content documentation"
+abstract: "Create a documentation with markdown files."
 ---
 
 A content documentation is a collection based on markdown files that are displayed in the UI as a documentation. This archetype is perfect for creating a documentation for your project.

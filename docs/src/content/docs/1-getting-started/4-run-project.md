@@ -1,6 +1,7 @@
 ---
 slug: "getting-started/run-project"
 title: "Run the project"
+abstract: "Run your Astrolingo project in development and production mode."
 ---
 
 This are the main commands to run your Astropi project, you can run them in your terminal at the root of your project.

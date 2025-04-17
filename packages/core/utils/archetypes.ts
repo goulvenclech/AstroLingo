@@ -7,12 +7,13 @@ import { userConfig } from "virtual:astrolingo-user-config"
  * @param location - the current URL location.
  */
 export function getCurrentArchetype(location: URL): Archetype {
+  const currentCollectionSegment = location.pathname.split("/")[1] // Get the first segment (collection name)
   const currentArchetype = userConfig.archetypes.find(
-    (archetype) => archetype.path === location.pathname.split("/")[1]
+    (archetype) => archetype.collection === currentCollectionSegment
   )
   if (!currentArchetype) {
     throw new Error(
-      `Astrolingo: No archetype found for the path: ${location.pathname.split("/")[1]}`
+      `Astrolingo: No archetype found for the collection: ${currentCollectionSegment}`
     )
   }
   return currentArchetype

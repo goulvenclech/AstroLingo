@@ -1,0 +1,116 @@
+---
+import type { MarkdownHeading } from "astro"
+
+/**
+ * Sticky sidebar navigation, used to display the headings of the current page.
+ * The sidebar will highlight the current heading when scrolling.
+ * @prop headings - Array of headings to display in the sidebar. Only depth 2 and 3 are recommended.
+ */
+interface Props {
+  headings: Array<MarkdownHeading>
+}
+
+const { headings } = Astro.props
+// Filter headings to only include depth 2 and 3 for cleaner navigation
+const filteredHeadings = headings.filter((h) => h.depth === 2 || h.depth === 3)
+---
+
+<aside class="hidden m-5 w-[200px] xl:block">
+  <nav class="sticky top-4 flex flex-col text-sm">
+    {
+      filteredHeadings.length > 0 && (
+        <h3 class="mb-1 ml-2 text-sm font-semibold">In this page</h3>
+      )
+    }
+    <ul class="list-none p-0 m-0">
+      {
+        filteredHeadings.map((heading) => (
+          <li>
+            <a
+              href={`#${heading.slug}`}
+              class:list={[
+                "flex items-center gap-1 rounded-lg border border-transparent px-2 py-1 no-underline line-clamp-2", // Base styles + text clamp
+                "hover:bg-foreground dark:hover:bg-foreground-dark", // Hover styles
+                // Active styles using arbitrary variant for the 'active' class added by script
+                "[&.active]:text-primary [&.active]:bg-primary-foreground",
+                // Indentation based on heading depth
+                {
+                  "ml-4": heading.depth === 3, // Indent level 3 headings (1rem)
+                },
+              ]}
+            >
+              {heading.text}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</aside>
+
+<script>
+  /**
+   * This script is used to highlight the current heading in the sidebar when scrolling.
+   */
+  document.addEventListener("DOMContentLoaded", function () {
+    const pageNavLinks = document.querySelectorAll("aside nav ul a")
+    if (pageNavLinks.length === 0) return // No headings, nothing to do
+
+    // Get all the headings in the main content (matching the filtered depths)
+    const contentHeadings = Array.from(
+      document.querySelectorAll("main h2, main h3") as NodeListOf<HTMLElement>
+    ).filter((h) =>
+      pageNavLinks[0]?.closest("nav")?.querySelector(`a[href="#${h.id}"]`)
+    ) // Ensure heading has a link in nav
+
+    contentHeadings.sort((a, b) => a.offsetTop - b.offsetTop)
+
+    function removeActiveClasses() {
+      pageNavLinks.forEach((link) => link.classList.remove("active"))
+    }
+
+    function addActiveClass(id: string) {
+      // Use attribute selector for potentially complex IDs
+      const link = document.querySelector(
+        `aside nav ul a[href="#${CSS.escape(id)}"]`
+      )
+      if (link) {
+        link.classList.add("active")
+      }
+    }
+
+    let throttleTimer = false
+
+    function handleScroll() {
+      if (throttleTimer) return
+
+      throttleTimer = true
+
+      setTimeout(() => {
+        let currentSectionId = null
+        // Consider the heading active when its top is within the top portion of the viewport
+        const scrollThreshold = window.scrollY + window.innerHeight * 0.2 // 20% from top
+
+        for (let i = contentHeadings.length - 1; i >= 0; i--) {
+          const heading = contentHeadings[i]
+          if (heading.offsetTop <= scrollThreshold) {
+            currentSectionId = heading.id
+            break // Found the current section
+          }
+        }
+
+        removeActiveClasses()
+        if (currentSectionId) {
+          addActiveClass(currentSectionId)
+        }
+        throttleTimer = false // Reset throttle flag
+      }, 100) // Throttle scroll handler execution
+    }
+
+    // Initial check in case the page loads scrolled
+    handleScroll()
+
+    // Attach scroll event listener
+    window.addEventListener("scroll", handleScroll, { passive: true })
+  })
+</script>

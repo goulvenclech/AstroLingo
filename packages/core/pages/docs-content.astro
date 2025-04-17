@@ -1,31 +1,54 @@
 ---
 import Layout from "../layouts/Layout.astro"
-import SidebarNavigation from "../components/old/SidebarNavigation.astro"
-import PageNavigation from "../components/old/PageNavigation.astro"
+import SidebarNavigation from "../layouts/SidebarNavigation.astro"
+import PageNavigation from "../layouts/PageNavigation.astro"
+import Card from "../components/Card.astro"
 import { getCurrentArchetype } from "../utils/archetypes"
 import { getCollectionEntries } from "../utils/collections-entries"
+import { generateCollectionNavigation } from "../utils/navigation";
 /**
- * This is used as the index page of blog's collections.
+ * This is used as the index page of docs' collections.
+ * It displays entries grouped by their category.
  */
 const archetype = getCurrentArchetype(Astro.url)
 
-const allDocsEntries = await getCollectionEntries(archetype.collection)
+// Fetch ALL entries for the current documentation collection
+const allEntries = await getCollectionEntries(archetype.collection);
+
+// Group entries by category using the navigation utility
+const groupedEntries = generateCollectionNavigation(allEntries);
 ---
 
-<Layout title={archetype?.name || ""} description={archetype?.name || ""}>
-  <SidebarNavigation allEntries={allDocsEntries} />
+<Layout
+  title={archetype?.name || ""}
+  description={`Index page for the ${archetype?.name || "documentation"} section.`}
+>
+  <SidebarNavigation />
   <main>
-    <section>
+    <section class="mb-8">
       <h1>{archetype?.name}</h1>
+      {archetype?.description && (
+        <p>{archetype.description}</p>
+      )}
     </section>
     <section>
-      {
-        allDocsEntries.map((entry) => (
-          <p>
-            <a href={archetype?.path + "/" + entry.slug}>{entry.data.title}</a>
-          </p>
-        ))
-      }
+    {Object.entries(groupedEntries).map(([category, entries]) => (
+      <h2 class="mb-4 text-xl font-semibold">{category}</h2>
+      <div class="grid grid-cols-1 gap-2.5 lg:grid-cols-2">
+        {
+          entries
+            .map((entry) => (
+              <Card
+                href=`/${archetype?.collection}/${entry.slug}`
+                title={entry.data.title}
+              >
+                {entry.data.abstract ||
+                  `Read more about ${entry.data.title}.`}
+              </Card>
+            ))
+        }
+      </div>
+    ))}
     </section>
   </main>
   <PageNavigation headings={[]} />

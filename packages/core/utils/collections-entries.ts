@@ -37,7 +37,7 @@ export async function getCollectionTypeEntries(type: string) {
     })
   // Finnaly, return the params and props for each entry
   return allBlogContentEntries.map((entry) => ({
-    params: { slug: entry.slug },
+    params: { slug: entry.collection + "/" + entry.slug },
     props: { entry },
   }))
 }

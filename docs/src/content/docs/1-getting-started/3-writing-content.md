@@ -1,6 +1,7 @@
 ---
 slug: "getting-started/writing-content"
 title: "Writing content"
+abstract: "Learn markdown syntax and frontmatter to write content."
 ---
 
 By default, Astropi uses markdown files to create content, here is the supported syntax:
