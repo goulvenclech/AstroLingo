@@ -1,5 +1,5 @@
 ---
-import Layout from "../layouts/Layout.astro"
+import Astrolingo from "../layouts/Astrolingo.astro"
 import SidebarNavigation from "../layouts/SidebarNavigation.astro"
 import PageNavigation from "../layouts/PageNavigation.astro"
 import Card from "../components/Card.astro"
@@ -19,7 +19,7 @@ const allEntries = await getCollectionEntries(archetype.collection);
 const groupedEntries = generateCollectionNavigation(allEntries);
 ---
 
-<Layout
+<Astrolingo
   title={archetype?.name || ""}
   description={`Index page for the ${archetype?.name || "documentation"} section.`}
 >

@@ -1,6 +1,6 @@
 ---
 import Card from "../components/Card.astro"
-import Layout from "../layouts/Layout.astro"
+import Astrolingo from "../layouts/Astrolingo.astro"
 import { getCurrentArchetype } from "../utils/archetypes"
 import { getCollectionEntries } from "../utils/collections-entries"
 /**
@@ -11,7 +11,7 @@ const archetype = getCurrentArchetype(Astro.url)
 const allBlogEntries = await getCollectionEntries(archetype?.collection)
 ---
 
-<Layout
+<Astrolingo
   title={archetype?.name || ""}
   description={`${archetype?.name} latest entries`}
 >
@@ -42,4 +42,4 @@ const allBlogEntries = await getCollectionEntries(archetype?.collection)
       }
     </section>
   </main>
-</Layout>
+</Astrolingo>

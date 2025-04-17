@@ -1,5 +1,5 @@
 ---
-import Layout from "../layouts/Layout.astro"
+import Astrolingo from "../layouts/Astrolingo.astro"
 import SidebarNavigation from "../layouts/SidebarNavigation.astro"
 import { getCollectionTypeEntries } from "../utils/collections-entries"
 import PageNavigation from "../layouts/PageNavigation.astro"
@@ -14,7 +14,7 @@ const { entry } = Astro.props
 const { Content, headings } = await entry.render()
 ---
 
-<Layout title={entry.data.title} description={entry.data.description}>
+<Astrolingo title={entry.data.title} description={entry.data.description}>
   <SidebarNavigation />
   <main>
     <section class="title-section">
@@ -26,4 +26,4 @@ const { Content, headings } = await entry.render()
     </section>
   </main>
   <PageNavigation headings={headings} />
-</Layout>
+</Astrolingo>
