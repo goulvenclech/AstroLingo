@@ -1,0 +1,21 @@
+# See https://github.com/actions/labeler
+
+"documentation":
+  - docs/**
+
+"starter":
+  - starter/**
+
+"pkg:core":
+  - packages/core/**
+
+"pkg:games":
+  - packages/games/**
+
+"devops":
+  - .github/**
+  - .vscode/**
+  - .gitignore
+  - .npmrc
+  - pnpm-workspace.yaml
+  - .prettierrc

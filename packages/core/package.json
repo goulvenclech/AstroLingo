@@ -1,8 +1,8 @@
 {
   "name": "@goulvenclech/astrolingo",
   "version": "0.0.1",
+  "type": "module",
   "scripts": {},
-  "main": "index.ts",
   "author": "Goulven Clec'h <goulven.clech@protonmail.com>",
   "description": "Build beautiful and accessible API documentations with Astro 🪐",
   "repository": {

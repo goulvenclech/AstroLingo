@@ -1,6 +1,6 @@
-# 🪐 Astropi Docs
+# 🪐 Astrolingo Docs
 
-This directory contains the Astropi documentation website (built with Astropi!)
+This directory contains our documentation website, built with Astrolingo!
 
 ## 🧞 Commands
 

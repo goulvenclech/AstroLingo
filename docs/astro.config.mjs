@@ -14,7 +14,7 @@ export default defineConfig({
   },
   integrations: [
     astrolingo({
-      projectName: "Astropi",
+      projectName: "Astrolingo",
       archetypes: [
         {
           path: "docs",
