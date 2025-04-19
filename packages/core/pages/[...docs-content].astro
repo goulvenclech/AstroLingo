@@ -3,15 +3,21 @@ import Astrolingo from "../layouts/Astrolingo.astro"
 import SidebarNavigation from "../layouts/SidebarNavigation.astro"
 import { getCollectionTypeEntries } from "../utils/collections-entries"
 import PageNavigation from "../layouts/PageNavigation.astro"
+import Card from "../components/Card.astro"
+import { getPrevNextNavigation } from "../utils/navigation"
+
 /**
- * this generate the pages inside blog's collections.
+ * Generates pages for entries within documentation collections.
  */
 export async function getStaticPaths() {
-  return getCollectionTypeEntries("docs-content")
+  const paths = await getCollectionTypeEntries("docs-content")
+  return paths
 }
-
 const { entry } = Astro.props
 const { Content, headings } = await entry.render()
+const collection = entry.collection
+
+const { prev, next } = await getPrevNextNavigation(collection, entry.slug)
 ---
 
 <Astrolingo title={entry.data.title} description={entry.data.description}>
@@ -24,6 +30,34 @@ const { Content, headings } = await entry.render()
     <section>
       <Content />
     </section>
+
+    {
+      (prev || next) && (
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+          {prev ? (
+            <Card href={`/${collection}/${prev.slug}`} title={prev.data.title}>
+              <p slot="subtitle" class="my-0">
+                {"<< Previous"}
+              </p>
+              {prev.data.abstract}
+            </Card>
+          ) : (
+            <div class="hidden md:block" />
+          )}
+
+          {next ? (
+            <Card href={`/${collection}/${next.slug}`} title={next.data.title}>
+              <p slot="subtitle" class="my-0">
+                {"Next >>"}
+              </p>
+              {next.data.abstract}
+            </Card>
+          ) : (
+            <div class="hidden md:block" />
+          )}
+        </section>
+      )
+    }
   </main>
   <PageNavigation headings={headings} />
 </Astrolingo>
