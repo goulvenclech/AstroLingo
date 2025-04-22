@@ -6,16 +6,18 @@ import HeroDraw from "@goulvenclech/astrolingo/components/old/icons/HeroDraw.ast
 ---
 
 <Astrolingo title="Welcome" description="This a new Astrolingo project!">
-  <main class="w-[64rem]">
-    <section class="grid grid-cols-2 items-center">
+  <main class="max-w-[64rem]">
+    <section class="grid grid-cols-1 md:grid-cols-2 items-center gap-4">
       <div>
-        <h1 class="text-5xl font-bold">Let's make learning languages free!</h1>
+        <h1 class="text-4xl md:text-5xl font-bold">
+          Let's make learning languages free!
+        </h1>
         <p>
           Astrolingo is a free and open-source project that helps you build
           beautiful and accessible language learning websites. It's built with
           <a href="https://astro.build" target="_blank">Astro</a>, a fast and
           modern Static Site Generator.
-          <div class="flex gap-3">
+          <div class="flex flex-col sm:flex-row gap-3 mt-4">
             <Button href="/docs"> Getting started </Button>
             <Button href="/blog/2024/release-0-2-mini-blog" alt>
               Alpha 0.2: minimal blog
@@ -28,7 +30,7 @@ import HeroDraw from "@goulvenclech/astrolingo/components/old/icons/HeroDraw.ast
 
     <section>
       <h2>Why Astrolingo?</h2>
-      <div class="grid grid-cols-2 gap-2.5">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5">
         <Card href="/" title="Fully-featured documentation">
           Focus on your content and let Astrolingo handle the rest. We provide
           accessible navigation, easy-to-read typography, integrated search,

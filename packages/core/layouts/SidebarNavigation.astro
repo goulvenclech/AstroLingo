@@ -9,30 +9,30 @@ import { generateCollectionNavigation } from "../utils/navigation"
  * by categories (folders in the collection, if any).
  */
 const archetype = getCurrentArchetype(Astro.url)
-const allEntries = await getCollectionEntries(archetype.collection)
+// Fetch entries only if archetype is valid
+const allEntries = archetype
+  ? await getCollectionEntries(archetype.collection)
+  : []
+const collectionNavigation = generateCollectionNavigation(allEntries)
 
-// Check if a link is the current page, used to apply the active class
 const isCurrentPage = (slug: string) => {
-  // Normalize current path: remove trailing slash, get last segment
+  if (!archetype) return false // Guard against null archetype
   const currentPathname = Astro.url.pathname.replace(/\/$/, "")
   const currentPage = currentPathname.split("/").pop() ?? ""
-  // Normalize link slug: get last segment if it contains slashes (though slugs usually don't)
   const pathPage = slug.split("/").pop() ?? ""
-  // Handle index pages explicitly if the slug is the base path
+  // Check if the current page is the collection index page
   if (
     pathPage === archetype.collection &&
     currentPage === archetype.collection
   ) {
     return true
   }
-  // Compare last segments for non-index pages
+  // Check if the pathPage is the same as the current page
   return pathPage === currentPage && pathPage !== archetype.collection
 }
-
-const collectionNavigation = generateCollectionNavigation(allEntries)
 ---
 
-<aside class="m-5 flex w-[200px] flex-col text-sm">
+<nav>
   {
     Object.entries(collectionNavigation).map(([category, entries]) => (
       <div class="mb-4">
@@ -40,16 +40,13 @@ const collectionNavigation = generateCollectionNavigation(allEntries)
           <h3 class="mb-1 ml-2 mt-0 text-sm font-semibold">{category}</h3>
         )}
         {entries.map((doc) => {
-          const url = `/${archetype.collection}/${doc.slug}`
+          const url = archetype ? `/${archetype.collection}/${doc.slug}` : "#"
           const isCurrent = isCurrentPage(doc.slug)
           return (
             <a
               href={url}
               aria-current={isCurrent ? "page" : false}
-              class:list={[
-                "flex items-center gap-1 rounded-lg border border-transparent px-2 py-1 my-1 no-underline interactive interactive-effect-nav",
-                "aria-[current=page]:text-primary aria-[current=page]:bg-primary-foreground", // Current page styles
-              ]}
+              class="flex items-center gap-1 interactive interactive-effect-nav my-1"
             >
               {doc.data.title}
             </a>
@@ -58,4 +55,4 @@ const collectionNavigation = generateCollectionNavigation(allEntries)
       </div>
     ))
   }
-</aside>
+</nav>

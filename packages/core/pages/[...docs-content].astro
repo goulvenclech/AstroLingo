@@ -20,8 +20,12 @@ const collection = entry.collection
 const { prev, next } = await getPrevNextNavigation(collection, entry.slug)
 ---
 
-<Astrolingo title={entry.data.title} description={entry.data.description}>
-  <SidebarNavigation />
+<Astrolingo
+  title={entry.data.title}
+  description={entry.data.description}
+  showSidebarInMobile
+>
+  <SidebarNavigation slot="sidebar" />
   <main>
     <section class="title-section">
       <h1>{entry.data.title}</h1>
@@ -37,7 +41,7 @@ const { prev, next } = await getPrevNextNavigation(collection, entry.slug)
           {prev ? (
             <Card href={`/${collection}/${prev.slug}`} title={prev.data.title}>
               <p slot="subtitle" class="my-0">
-                {"<< Previous"}
+                ← Previous
               </p>
               {prev.data.abstract}
             </Card>
@@ -48,7 +52,7 @@ const { prev, next } = await getPrevNextNavigation(collection, entry.slug)
           {next ? (
             <Card href={`/${collection}/${next.slug}`} title={next.data.title}>
               <p slot="subtitle" class="my-0">
-                {"Next >>"}
+                Next →
               </p>
               {next.data.abstract}
             </Card>
@@ -59,5 +63,5 @@ const { prev, next } = await getPrevNextNavigation(collection, entry.slug)
       )
     }
   </main>
-  <PageNavigation headings={headings} />
+  <PageNavigation headings={headings} slot="navigation" />
 </Astrolingo>

@@ -2,48 +2,145 @@
 // Astro imports
 import Logo from "../components/old/Logo.astro"
 import DarkMode from "../components/old/icons/DarkMode.astro"
-import { userConfig } from "virtual:astrolingo-user-config"
-const { archetypes } = userConfig
+import HeaderNavigation from "./HeaderNavigation.astro"
+import SidebarNavigation from "./SidebarNavigation.astro"
+
 /**
- * Header navigation used on our website layout
+ * Header component containing Logo, Navigation, Mobile Menu, and static links.
  */
-// Check if a path matches the current page
-const isCurrentPage = (path: string) => {
-  // Handle root path explicitly
-  if (Astro.url.pathname === "/" && path === "") return true
-  // Handle other paths
-  const currentFirstSegment = Astro.url.pathname.split("/")[1] ?? ""
-  return currentFirstSegment === path
+interface Props {
+  showSidebarInMobile?: boolean
 }
+
+const { showSidebarInMobile = false } = Astro.props
 ---
 
 <nav class="m-5 flex items-center gap-2">
   <Logo />
-  {
-    archetypes.map((archetype) => {
-      const url = `/${archetype.collection}`
-      const isCurrent = isCurrentPage(archetype.collection)
-      return (
-        <a
-          href={url}
-          aria-current={isCurrent ? "page" : false}
-          class:list={[
-            "flex items-center gap-1 rounded-lg border border-transparent px-2 py-1 no-underline interactive interactive-effect-nav",
-            "aria-[current=page]:bg-primary-foreground aria-[current=page]:text-primary", // Current page styles
-          ]}
-        >
-          {archetype.name}
-        </a>
-      )
-    })
-  }
-  <a
-    href="https://github.com/goulvenclech/astrolingo"
-    class="ml-auto flex items-center leading-6 hover:text-primary active:text-primary"
-    target="_blank"
-    rel="noopener noreferrer"
+
+  <HeaderNavigation />
+
+  <!-- Mobile Menu Button -->
+  <button
+    id="mobile-menu-button"
+    class="ml-auto rounded p-1 md:hidden"
+    aria-label="Open navigation menu"
+    aria-expanded="false"
+    aria-controls="mobile-menu"
   >
-    Join on Github!
-  </a>
-  <DarkMode />
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+      class="h-6 w-6"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+    </svg>
+  </button>
+
+  <!-- Static Right-Side Links (GitHub, DarkMode) -->
+  <div class="ml-auto hidden items-center md:flex">
+    <a
+      href="https://github.com/goulvenclech/astrolingo"
+      class="flex items-center leading-6 hover:text-primary active:text-primary px-2 py-1"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Join on Github!
+    </a>
+    <DarkMode />
+  </div>
 </nav>
+
+<!-- Mobile Menu Panel -->
+<div
+  id="mobile-menu"
+  class="fixed inset-x-0 top-0 z-50 hidden origin-top transform flex-col bg-background p-5 transition md:hidden"
+>
+  <div class="flex items-center justify-between">
+    <Logo />
+    <button id="mobile-menu-close-button" class="rounded p-1">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="h-6 w-6"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+      <span class="sr-only">Close menu</span>
+    </button>
+  </div>
+
+  <div class="mt-6 flex flex-col gap-4">
+    <HeaderNavigation isMobile />
+
+    {
+      showSidebarInMobile && (
+        <>
+          <hr class="my-2 border-foreground dark:border-foreground-dark" />
+          <SidebarNavigation />
+          <hr class="my-2 border-foreground dark:border-foreground-dark" />
+        </>
+      )
+    }
+
+    <div class="flex flex-col gap-1">
+      <a
+        href="https://github.com/goulvenclech/astrolingo"
+        class="block py-2 interactive interactive-effect-nav px-2"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Join on Github!
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  const menuButton = document.getElementById("mobile-menu-button")
+  const closeButton = document.getElementById("mobile-menu-close-button")
+  const mobileMenu = document.getElementById("mobile-menu")
+
+  function openMenu() {
+    if (mobileMenu) {
+      mobileMenu.classList.remove("hidden")
+      mobileMenu.classList.add("flex")
+      menuButton?.setAttribute("aria-expanded", "true")
+    }
+  }
+
+  function closeMenu() {
+    if (mobileMenu) {
+      mobileMenu.classList.add("hidden")
+      mobileMenu.classList.remove("flex")
+      menuButton?.setAttribute("aria-expanded", "false")
+    }
+  }
+
+  menuButton?.addEventListener("click", openMenu)
+  closeButton?.addEventListener("click", closeMenu)
+
+  // Close menu when clicking a link inside it
+  mobileMenu?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", closeMenu)
+  })
+
+  // Close menu if Esc key is pressed
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeMenu()
+    }
+  })
+</script>

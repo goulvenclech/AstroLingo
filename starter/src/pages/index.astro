@@ -5,52 +5,52 @@ import Button from "@goulvenclech/astrolingo/components/Button.astro"
 import HeroDraw from "@goulvenclech/astrolingo/components/old/icons/HeroDraw.astro"
 ---
 
-<Astrolingo title="Welcome" description="This a new Astrolingo project!">
-  <main class="w-[64rem]">
-    <section class="grid grid-cols-2 items-center">
+<Astrolingo
+  title="Welcome to your Astrolingo Starter!"
+  description="Start building your language learning site."
+>
+  <main class="max-w-[64rem]">
+    <section class="grid grid-cols-1 md:grid-cols-2 items-center gap-4">
       <div>
-        <h1 class="text-5xl font-bold">Let's make learning languages free!</h1>
+        <h1 class="text-4xl md:text-5xl font-bold">
+          Your Astrolingo Project is Ready!
+        </h1>
         <p>
-          Astrolingo is a free and open-source project that helps you build
-          beautiful and accessible language learning websites. It's built with
-          <a href="https://astro.build" target="_blank">Astro</a>, a fast and
-          modern Static Site Generator.
-          <div class="flex gap-3">
-            <Button href="/docs"> Getting started </Button>
-            <Button href="/blog/2024/release-0-2-mini-blog" alt>
-              Alpha 0.2: minimal blog
-            </Button>
-          </div>
+          This is your starter template. Begin by editing content in the
+          <code>src/content/</code> directory or customize the configuration in <code
+            >astrolingo.config.mjs</code
+          >. Built with
+          <a href="https://astro.build" target="_blank">Astro</a>.
         </p>
+        <div class="flex flex-col sm:flex-row gap-3 mt-4">
+          <Button href="/docs/getting-started"> Read the Docs </Button>
+          <Button href="/blog" alt> View Example Blog </Button>
+        </div>
       </div>
       <HeroDraw />
     </section>
 
     <section>
-      <h2>Why Astrolingo?</h2>
-      <div class="grid grid-cols-2 gap-2.5">
-        <Card href="/" title="Fully-featured documentation">
-          Focus on your content and let Astrolingo handle the rest. We provide
-          accessible navigation, easy-to-read typography, integrated search,
-          dark mode, internationalization, and more.
+      <h2>Next Steps</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+        <Card href="/docs/configuration" title="Configure Your Site">
+          Customize your site title, logo, navigation, theme colors, and more in
+          <code>astrolingo.config.mjs</code>.
         </Card>
 
-        <Card href="/" title="Customizable and scalable">
-          Use our Archetypes to quickly a add new blog section, documentation
-          page, API references... They take care of the boilerplate, while being
-          fully customizable.
+        <Card href="/docs/content" title="Add Your Content">
+          Start writing documentation in <code>src/content/docs/</code> or blog posts
+          in <code>src/content/blog/</code> using Markdown or MDX.
         </Card>
 
-        <Card href="/" title="Bring your components">
-          Add life to your content with our set of pre-made components. We also
-          support any components from Astro, React, Vue, Svelte, or any major JS
-          framework.
+        <Card href="/docs/components" title="Explore Components">
+          Use built-in components or bring your own from Astro, React, Vue,
+          etc., to enhance your pages.
         </Card>
 
-        <Card href="/" title="Powered by Astro">
-          Astro is a modern static site generator that help us to build fast and
-          modern websites. Astrolingo supports all of your favorite Astro
-          integrations and libraries, out of the box.
+        <Card href="/docs" title="Read Full Documentation">
+          Dive deeper into Astrolingo's features, archetypes, and advanced
+          customization options.
         </Card>
       </div>
     </section>

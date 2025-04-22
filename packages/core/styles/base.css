@@ -31,6 +31,13 @@
   * Typography of your theme. Can be overriden by utility classes.
   */
 @layer base {
+  main {
+    @apply w-full max-w-[70ch] px-5 mx-auto;
+  }
+  section {
+    @apply mt-6 mb-12;
+  }
+
   h1 {
     @apply text-3xl font-extrabold leading-none my-5;
   }
@@ -65,7 +72,7 @@
   }
 
   .interactive-effect-nav {
-    @apply hover:bg-foreground dark:hover:bg-foreground-dark active:text-primary active:bg-primary-foreground;
+    @apply hover:bg-foreground dark:hover:bg-foreground-dark active:text-primary active:bg-primary-foreground px-2 py-1 aria-[current=page]:text-primary aria-[current=page]:bg-primary-foreground [&.active]:text-primary [&.active]:bg-primary-foreground;
   }
 
   .card {

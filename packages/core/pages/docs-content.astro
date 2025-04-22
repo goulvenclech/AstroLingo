@@ -22,8 +22,9 @@ const groupedEntries = generateCollectionNavigation(allEntries);
 <Astrolingo
   title={archetype?.name || ""}
   description={`Index page for the ${archetype?.name || "documentation"} section.`}
+  showSidebarInMobile
 >
-  <SidebarNavigation />
+<SidebarNavigation slot="sidebar" />
   <main>
     <section class="mb-8">
       <h1>{archetype?.name}</h1>
@@ -51,5 +52,5 @@ const groupedEntries = generateCollectionNavigation(allEntries);
     ))}
     </section>
   </main>
-  <PageNavigation headings={[]} />
+  <PageNavigation headings={[]}  slot="navigation" />
 </Layout>

@@ -4,34 +4,26 @@ import Header from "./Header.astro"
 import Footer from "./Footer.astro"
 /**
  * Layout used for most pages of the site.
- * @param {string} title - The title of the page.
  */
 interface Props {
   title: string
   description: string
+  showSidebarInMobile?: boolean
 }
 
-const { title, description } = Astro.props
+const { title, description, showSidebarInMobile = false } = Astro.props
 ---
 
-<BaseLayout title={title} description={description}>
-  <Header />
+<BaseLayout {title} {description}>
+  <Header {showSidebarInMobile} />
   <div class="flex">
+    <aside class="m-5 hidden w-[200px] flex-col text-sm lg:flex">
+      <slot name="sidebar" />
+    </aside>
     <slot />
+    <aside class="m-5 hidden w-[200px] flex-col text-sm xl:flex">
+      <slot name="navigation" />
+    </aside>
   </div>
   <Footer />
 </BaseLayout>
-<style is:global>
-  @layer base {
-    main {
-      width: 70ch;
-      padding: 0 0.5rem;
-      margin: 0 auto;
-    }
-    section {
-      margin: 0;
-      margin-top: 1.5rem;
-      margin-bottom: 3rem;
-    }
-  }
-</style>

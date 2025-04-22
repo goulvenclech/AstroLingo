@@ -1,0 +1,52 @@
+---
+import { userConfig } from "virtual:astrolingo-user-config"
+
+const { archetypes } = userConfig
+
+/**
+ * Header navigation links based on defined archetypes.
+ * Adapts styling based on context (desktop header or mobile menu).
+ */
+interface Props {
+  isMobile?: boolean
+}
+
+const { isMobile = false } = Astro.props
+
+// Check if a header link corresponds to the current page's section
+const isCurrentHeaderPage = (path: string) => {
+  // Handle the root path explicitly
+  if (Astro.url.pathname === "/" && path === "") return true
+  // Get the first segment of the current path (e.g., 'docs' from '/docs/getting-started')
+  const currentFirstSegment = Astro.url.pathname.split("/")[1] ?? ""
+  // Compare the first segment with the archetype's collection path
+  return currentFirstSegment === path
+}
+---
+
+<div
+  class:list={[
+    "items-center gap-1",
+    { "flex flex-col": isMobile },
+    { "hidden md:flex": !isMobile },
+  ]}
+>
+  {
+    archetypes.map((archetype) => {
+      const url = `/${archetype.collection}`
+      const isCurrent = isCurrentHeaderPage(archetype.collection)
+      return (
+        <a
+          href={url}
+          aria-current={isCurrent ? "page" : false}
+          class:list={[
+            "interactive interactive-effect-nav",
+            { "block w-full": isMobile },
+          ]}
+        >
+          {archetype.name}
+        </a>
+      )
+    })
+  }
+</div>
