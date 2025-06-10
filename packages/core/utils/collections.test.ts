@@ -33,7 +33,7 @@ describe("generateCollections", () => {
       prerender: true,
     })
     expect(injectRoute).toHaveBeenCalledWith({
-      pattern: "/blog/[...slug]",
+      pattern: "/[...slug]",
       entrypoint: "@goulvenclech/astrolingo/pages/[...blog].astro",
       prerender: true,
     })
@@ -43,7 +43,7 @@ describe("generateCollections", () => {
       prerender: true,
     })
     expect(injectRoute).toHaveBeenCalledWith({
-      pattern: "/docs/[...slug]",
+      pattern: "/[...slug]",
       entrypoint: "@goulvenclech/astrolingo/pages/[...docs-content].astro",
       prerender: true,
     })
@@ -53,7 +53,7 @@ describe("generateCollections", () => {
       prerender: true,
     })
     expect(injectRoute).toHaveBeenCalledWith({
-      pattern: "/reference/[...slug]",
+      pattern: "/[...slug]",
       entrypoint: "@goulvenclech/astrolingo/pages/[...docs-openapi].astro",
       prerender: true,
     })

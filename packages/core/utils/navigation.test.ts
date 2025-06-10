@@ -1,6 +1,11 @@
 // Test packages/astrolingo/utils/navigation.ts exported functions
 import { describe, it, expect, vi } from "vitest"
-import { generateCollectionNavigation } from "./navigation"
+import { generateCollectionNavigation, getPrevNextNavigation } from "./navigation"
+import { getCollectionEntries } from "./collections-entries"
+
+vi.mock("./collections-entries", () => ({
+  getCollectionEntries: vi.fn(),
+}))
 
 const exampleCollectionEntries = [
   {
@@ -171,4 +176,16 @@ describe("generateNavigation", () => {
       const keys = Object.keys(navigation)
       expect(keys[0]).toEqual("")
     })
+})
+
+describe("getPrevNextNavigation", () => {
+  it("should return the previous and next entries", async () => {
+    vi.mocked(getCollectionEntries).mockResolvedValue(exampleCollectionEntries)
+    const nav = await getPrevNextNavigation(
+      "doc",
+      "first-category/second-category-entry"
+    )
+    expect(nav.prev?.slug).toBe("first-category/first-category-entry")
+    expect(nav.next?.slug).toBe("second-category/first-category-entry")
+  })
 })

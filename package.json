@@ -5,7 +5,7 @@
   "description": "Root workspace for AstroLingo",
   "scripts": {
     "version": "pnpm changeset version && pnpm i --no-frozen-lockfile",
-    "test": "vitest --ui  --coverage"
+    "test": "vitest run --coverage.provider=istanbul"
   },
   "keywords": [],
   "author": "",
