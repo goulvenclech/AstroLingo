@@ -6,6 +6,6 @@ import {
 export const collections = {
   blog: blogContentCollection,
   docs: docsContentCollection,
-  contribute: docsContentCollection,
+  guide: docsContentCollection,
   refs: docsContentCollection,
 }

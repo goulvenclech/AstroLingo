@@ -23,7 +23,7 @@ const { showSidebarInMobile = false } = Astro.props
   <!-- Mobile Menu Button -->
   <button
     id="mobile-menu-button"
-    class="ml-auto rounded p-1 md:hidden"
+    class="ml-auto rounded p-1 md:hidden interactive"
     aria-label="Open navigation menu"
     aria-expanded="false"
     aria-controls="mobile-menu"
@@ -47,7 +47,7 @@ const { showSidebarInMobile = false } = Astro.props
   <div class="ml-auto hidden items-center md:flex">
     <a
       href="https://github.com/goulvenclech/astrolingo"
-      class="flex items-center leading-6 hover:text-primary active:text-primary px-2 py-1"
+      class="flex items-center leading-6 hover:text-primary active:text-primary px-2 py-1 interactive interactive-effect-nav"
       target="_blank"
       rel="noopener noreferrer"
     >
@@ -60,11 +60,11 @@ const { showSidebarInMobile = false } = Astro.props
 <!-- Mobile Menu Panel -->
 <div
   id="mobile-menu"
-  class="fixed inset-x-0 top-0 z-50 hidden origin-top transform flex-col bg-background p-5 transition md:hidden"
+  class="fixed inset-x-0 top-0 z-50 hidden origin-top transform flex-col bg-background dark:bg-background-dark p-5 transition md:hidden"
 >
   <div class="flex items-center justify-between">
     <Logo />
-    <button id="mobile-menu-close-button" class="rounded p-1">
+    <button id="mobile-menu-close-button" class="rounded p-1 interactive">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"

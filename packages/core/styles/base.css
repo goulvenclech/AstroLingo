@@ -53,6 +53,26 @@
   p {
     @apply text-base leading-relaxed my-5;
   }
+
+  p a {
+    @apply underline hover:text-primary decoration-dotted;
+  }
+
+  blockquote {
+    @apply border-l-4 border-primary pl-2.5 my-5;
+  }
+
+  main ul {
+    @apply list-disc list-inside my-5;
+  }
+
+  main ol {
+    @apply list-decimal list-inside my-5;
+  }
+
+  main li {
+    @apply my-2;
+  }
 }
 
 /**
